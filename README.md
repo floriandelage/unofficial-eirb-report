@@ -3,7 +3,7 @@
 
 An unofficial [Typst](https://typst.app/) template for [Enseirb-Matmeca](https://enseirb-matmeca.bordeaux-inp.fr/fr)
 
-*Disclaimer: This template is NOT affiliated with Enseirb-Matmeca. The Enseirb-Matmeca logo included in this repository is the property of Enseirb-Matmeca and is provided for use by Enseirb-Matmeca students. Use by others requires prior written approval.*
+*Disclaimer: This template is NOT affiliated with Enseirb-Matmeca.*
 
 ## Assets and trademarks
 
