@@ -11,6 +11,14 @@ doc:
   typst compile template/main.typ thumbnail.png --format png --pages 1
   typst compile template/main.typ docs/example.pdf
 
+# run test suite
+test *args:
+  tt run --no-fail-fast {{ args }}
+
+# update test cases
+update *args:
+  tt update {{ args }}
+
 # package the library into the specified destination folder
 package target:
   ./scripts/package "{{target}}"
@@ -32,4 +40,4 @@ uninstall: (remove "@local")
 uninstall-preview: (remove "@preview")
 
 # run ci suite
-ci: doc
+ci: test doc
