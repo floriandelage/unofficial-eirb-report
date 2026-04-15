@@ -1,9 +1,19 @@
-# Enseirb-Matmeca Typst Template for reports
+# Enseirb-Matmeca Typst template for reports
 [![GitHub release](https://img.shields.io/github/v/release/floriandelage/report-eirb)](https://github.com/floriandelage/report-eirb/releases)
 
 An unofficial [Typst](https://typst.app/) template for [Enseirb-Matmeca](https://enseirb-matmeca.bordeaux-inp.fr/fr)
 
 *Disclaimer: This template is NOT affiliated with Enseirb-Matmeca. The Enseirb-Matmeca logo included in this repository is the property of Enseirb-Matmeca and is provided for use by Enseirb-Matmeca students. Use by others requires prior written approval.*
+
+## Assets and trademarks
+
+This package includes official branding assets from Enseirb-Matmeca / Bordeaux INP.
+
+These assets are **not covered by the package license** and remain the property of their respective copyright holders.
+
+- Enseirb-Matmeca branding guidelines and assets: https://enseirb-matmeca.bordeaux-inp.fr/fr/outils-de-communication-inp
+
+Use of these assets is subject to the terms provided by the copyright holder.
 
 <p align="center" style="margin-top:0px;">
    <a href="docs/example.pdf">View example PDF output</a>
