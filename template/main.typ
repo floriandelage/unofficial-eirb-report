@@ -1,4 +1,5 @@
-#import "@local/report-eirb:0.1.0": template
+// #import "@local/report-eirb:0.1.0": template
+#import "../src/lib.typ": template
 
 // ==========================================================================
 //        Template
