@@ -24,7 +24,7 @@ Use of these assets is subject to the terms provided by the copyright holder.
 1. **Font Instalalation (optional, but recommended)**
     - The template uses [Linux Libertine](https://www.dafont.com/linux-libertine.font) for the main text
     - The template also uses [JetBrains Mono](https://www.jetbrains.com/lp/mono/) for raw texts (e.g: code blocks)
-    - There is a fallback system that will use "New Computer Modern", the default typst font
+    - There is a fallback system that will use "New Computer Modern", the default Typst font
 
 2. **Configure the template**
     - Edit the template parameters in `main.typ` to set your details:
