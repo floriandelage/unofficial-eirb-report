@@ -1,9 +1,9 @@
-# Enseirb-Matmeca Typst template for reports
+# Enseirb-Matmeca Typst Template for Reports
 [![GitHub release](https://img.shields.io/github/v/release/floriandelage/report-eirb)](https://github.com/floriandelage/report-eirb/releases)
 
 An unofficial [Typst](https://typst.app/) template for [Enseirb-Matmeca](https://enseirb-matmeca.bordeaux-inp.fr/fr)
 
-*Disclaimer: This template is NOT affiliated with Enseirb-Matmeca.*
+*Disclaimer: This template is not affiliated with Enseirb-Matmeca.*
 
 ## Assets and trademarks
 
@@ -21,9 +21,9 @@ Use of these assets is subject to the terms provided by the copyright holder.
 
 ## Getting Started
 
-1. **Font Instalalation (optional, but recommended)**
+1. **Font Installation (optional, but recommended)**
     - The template uses [Linux Libertine](https://www.dafont.com/linux-libertine.font) for the main text
-    - The template also uses [JetBrains Mono](https://www.jetbrains.com/lp/mono/) for raw texts (e.g: code blocks)
+    - The template also uses [JetBrains Mono](https://www.jetbrains.com/lp/mono/) for code blocks and raw text
     - There is a fallback system that will use "New Computer Modern", the default Typst font
 
 2. **Configure the template**
@@ -54,7 +54,7 @@ Use of these assets is subject to the terms provided by the copyright holder.
     ```
 
 3. **Write your content**
-    - The sections are split into files for organisation (see the `section` folder)
+    - The sections are split into files for organisation (see the `sections` folder)
     - If you add sections, don't forget to add them in the `main.typ` file
 
 4. **Compile your document**
@@ -74,7 +74,7 @@ Use of these assets is subject to the terms provided by the copyright holder.
 - [Typst Examples Book](https://sitandr.github.io/typst-examples-book/book/)
 
 ### Installation
-> **Note:** There is also an online editor for Typst at [typst.app](https://typst.app/)
+> **Note:** Typst also provides an online editor at [typst.app](https://typst.app/)
 
 1. **Install Typst**
    - [Typst GitHub Repository](https://github.com/typst/typst?tab=readme-ov-file#installation)
@@ -84,13 +84,34 @@ Use of these assets is subject to the terms provided by the copyright holder.
 
 ## Working with References
 
+### Subfigures
+
+This template includes the package [subpar](https://typst.app/universe/package/subpar/), which allows you to easily create and reference subfigures, a feature that is not natively supported in Typst.
+
+You can create subfigures and label them like this:
+
+```typst
+#import "@preview/unofficial-eirb-report:0.1.1": subfig
+
+#subfig(
+  figure(image("./assets/figure.png"), caption: [Première sous-figure]),
+  <fig-a>,
+  figure(image("./assets/figure.png"), caption: [Seconde sous-figure]),
+  <fig-b>,
+  columns: (1fr, 1fr),
+  caption: [Une figure contenant deux sous-figures.],
+  label: <fig-full>,
+)
+```
+
+
 ### Bibliography
 - Add references to `bib.yaml`
 - Reference in text using `@citation_key` or `#ref(<citation_key>)`
-- Bibliography generated automatically at document end
+- The bibliography is generated automatically at the end fo the document
 - Supports articles, books, proceedings, web resources, and more
 
 ## Credits
 This template is built on the foundation provided by [onyx-itu-unofficial](https://github.com/FrederikBertelsen/onyx-itu-unofficial) by FrederikBertelsen.
-The original work has been expanded with modified and additional features, french language,
+The original work has been expanded with additional features, French language support,
 and Enseirb-Matmeca styling.

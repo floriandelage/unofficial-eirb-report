@@ -58,24 +58,21 @@
 
 #let _build-footer(
   school-logo,
-  school-logo-width,
   company-logo,
-  company-logo-width,
 ) = context {
   line(length: 100%)
   grid(
     columns: (1fr, 1fr, 1fr),
     align: (left, center, right),
     if (company-logo != none) {
-      image(company-logo, width: company-logo-width)
+      company-logo
     } else {
       []
     },
     text(1.2em, counter(page).display("1 / 1", both: true)),
-    image(school-logo, width: school-logo-width),
+    school-logo,
   )
 }
-
 // ==========================================================================
 //  Subfigures
 // ==========================================================================
@@ -113,9 +110,7 @@
 
 #let _title-page(
   school-logo,
-  school-logo-width,
   company-logo,
-  company-logo-width,
   sector,
   document-type,
   title,
@@ -129,11 +124,10 @@
     grid(
       columns: (1fr, 1fr),
       align: (left, right),
-      image(school-logo, width: company-logo-width),
-      image(company-logo, width: company-logo-width),
+      school-logo, company-logo,
     )
   } else {
-    align(center, image(school-logo, width: school-logo-width))
+    align(center, school-logo)
   }
 
   if sector != none {
@@ -171,14 +165,16 @@
 }
 
 #let _abstract-page(abstract) = {
-  v(1fr)
-  align(center, heading(outlined: false, numbering: none, text(
-    0.85em,
-    smallcaps[Abstract],
-  )))
-  abstract
-  v(1.618fr)
-  pagebreak()
+  if (abstract != none) {
+    v(1fr)
+    align(center, heading(outlined: false, numbering: none, text(
+      0.85em,
+      smallcaps[Abstract],
+    )))
+    abstract
+    v(1.618fr)
+    pagebreak()
+  }
 }
 
 #let _toc-page() = {
@@ -199,10 +195,8 @@
 // ==========================================================================
 
 #let template(
-  school-logo: "assets/logo.png",
-  school-logo-width: 50%,
+  school-logo: image("./assets/logo.png", width: 50%),
   company-logo: none,
-  company-logo-width: 50%,
 
   sector: none,
   document-type: none,
@@ -343,9 +337,7 @@
 
   _title-page(
     school-logo,
-    school-logo-width,
     company-logo,
-    company-logo-width,
     sector,
     document-type,
     title,
@@ -364,9 +356,7 @@
     header: _header,
     footer: _build-footer(
       school-logo,
-      school-logo-width,
       company-logo,
-      company-logo-width,
     ),
     numbering: "1",
   )
