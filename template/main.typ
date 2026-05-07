@@ -1,4 +1,4 @@
-#import "@preview/unofficial-eirb-report:0.1.0": template
+#import "@local/unofficial-eirb-report:0.1.0": template
 
 // ==========================================================================
 //        Template
@@ -22,8 +22,7 @@
   adviser-columns: 1,
 
   date: "Mai 2025",
-  abstract: include "sections/0-abstract.typ"
-  ,
+  abstract: include "sections/0-abstract.typ",
 )
 
 // ==========================================================================

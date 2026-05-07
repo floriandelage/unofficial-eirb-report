@@ -37,8 +37,9 @@
   let chapter = _current-chapter.get()
   let section = _current-section.get()
 
-  let next-chapter = query(heading.where(level: 1))
-  .find(h => ( h.location().page() == here().page() ))
+  let next-chapter = query(heading.where(level: 1)).find(h => (
+    h.location().page() == here().page()
+  ))
 
   if next-chapter != none {
     _build-main-header(next-chapter.body)
@@ -55,12 +56,23 @@
 //  Footer
 // ==========================================================================
 
-#let _build-footer(logo, logo-width) = context {
+#let _build-footer(
+  school-logo,
+  school-logo-width,
+  company-logo,
+  company-logo-width,
+) = context {
   line(length: 100%)
   grid(
     columns: (1fr, 1fr, 1fr),
     align: (left, center, right),
-    [], text(1.2em, counter(page).display("1 / 1", both: true)), image(logo, width: logo-width),
+    if (company-logo != none) {
+      image(company-logo, width: company-logo-width)
+    } else {
+      []
+    },
+    text(1.2em, counter(page).display("1 / 1", both: true)),
+    image(school-logo, width: school-logo-width),
   )
 }
 
@@ -100,8 +112,10 @@
 }
 
 #let _title-page(
-  logo,
-  logo-width,
+  school-logo,
+  school-logo-width,
+  company-logo,
+  company-logo-width,
   sector,
   document-type,
   title,
@@ -111,7 +125,16 @@
   adviser-columns,
   date,
 ) = {
-  align(center, image(logo, width: logo-width))
+  if (company-logo != none) {
+    grid(
+      columns: (1fr, 1fr),
+      align: (left, right),
+      image(school-logo, width: company-logo-width),
+      image(company-logo, width: company-logo-width),
+    )
+  } else {
+    align(center, image(school-logo, width: school-logo-width))
+  }
 
   if sector != none {
     align(center, smallcaps(text(1.4em, sector)))
@@ -176,8 +199,10 @@
 // ==========================================================================
 
 #let template(
-  logo: "assets/logo.png",
-  logo-width: 50%,
+  school-logo: "assets/logo.png",
+  school-logo-width: 50%,
+  company-logo: none,
+  company-logo-width: 50%,
 
   sector: none,
   document-type: none,
@@ -218,6 +243,11 @@
   )
 
   // -- Math -----------------------------------------------------------------
+
+  set math.equation(numbering: it => {
+    let chapter = counter(heading.where(level: 1)).get().first()
+    numbering("(I.1)", chapter, it)
+  })
 
   show math.equation: it => {
     set text(weight: "regular")
@@ -266,6 +296,7 @@
   show heading.where(level: 1): it => {
     if it.outlined {
       counter(figure).update(0)
+      counter(math.equation).update(0)
       if chapter-break { pagebreak(weak: true) }
       _current-chapter.update(it.body)
       _current-section.update(none)
@@ -299,11 +330,22 @@
     v(0.4em)
   }
 
+  show heading: it => {
+    if (it.level > 3) {
+      set par(first-line-indent: 0em)
+      text(1em, weight: "bold", style: "italic", it.body)
+    } else {
+      it
+    }
+  }
+
   // -- Front matter --------------------------------------------------------------
 
   _title-page(
-    logo,
-    logo-width,
+    school-logo,
+    school-logo-width,
+    company-logo,
+    company-logo-width,
     sector,
     document-type,
     title,
@@ -320,7 +362,12 @@
 
   set page(
     header: _header,
-    footer: _build-footer(logo, logo-width),
+    footer: _build-footer(
+      school-logo,
+      school-logo-width,
+      company-logo,
+      company-logo-width,
+    ),
     numbering: "1",
   )
 

@@ -1,4 +1,4 @@
-#import "../../src/lib.typ": subfig
+#import "@preview/unofficial-eirb-report:0.1.0": subfig
 
 = Exemples de figures
 
@@ -17,13 +17,9 @@ la référencer comme ceci : @basic-fig.
 #figure(
   table(
     columns: (auto, auto, auto),
-    table.header(
-      [*Nom*],
-      [*Âge*],
-      [*Rôle*],
-    ),
-    [Alice],   [28], [Designer],
-    [Bob],     [34], [Développeur],
+    table.header([*Nom*], [*Âge*], [*Rôle*]),
+    [Alice], [28], [Designer],
+    [Bob], [34], [Développeur],
     [Charlie], [45], [Manager],
   ),
   caption: [Une figure contenant un tableau et une description.],
@@ -43,7 +39,6 @@ Voir @table-fig pour les valeurs.
   }
   ```,
   caption: [Une figure contenant du code.],
-  kind: raw,
 ) <code-fig>
 
 == Sous-figures
