@@ -1,4 +1,4 @@
-#import "@preview/unofficial-eirb-report:0.1.0": subfig
+#import "@preview/unofficial-eirb-report:0.1.1": subfig
 
 = Exemples de figures
 

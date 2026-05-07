@@ -1,4 +1,4 @@
-#import "@local/unofficial-eirb-report:0.1.0": template
+#import "@preview/unofficial-eirb-report:0.1.1": template
 
 // ==========================================================================
 //        Template
